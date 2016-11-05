@@ -5,6 +5,9 @@ const nunjucks = require('nunjucks')
 const mongoose = require('mongoose')
 const config = process.env.NODE_ENV === 'test' ? require('../config/test.json') : require('../config/default.json')
 
+// setup mongoose promise api
+mongoose.Promise = global.Promise
+
 // configure db connection
 mongoose.connect(config.dbHost)
 
