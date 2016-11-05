@@ -5,10 +5,10 @@ function getMovies (req, res) {
     .find({})
     .exec((err, movies) => {
       if (err) {
-        res.send(err)
+        return res.send(err)
       }
 
-      res.json(movies)
+      return res.json(movies)
     })
 }
 
@@ -17,10 +17,10 @@ function postMovie (req, res) {
 
   newMovie.save((err, movie) => {
     if (err) {
-      res.send(err)
+      return res.send(err)
     }
 
-    res.json({
+    return res.json({
       message: 'Movie successfully added!',
       movie
     })
@@ -30,34 +30,34 @@ function postMovie (req, res) {
 function getMovie (req, res) {
   Movie.findById(req.params.id, (err, movie) => {
     if (err) {
-      res.send(err)
+      return res.send(err)
     }
 
-    res.json(movie)
+    return res.json(movie)
   })
 }
 
 function deleteMovie (req, res) {
   Movie.remove({_id: req.params.id}, (err, result) => {
     if (err) {
-      res.send(err)
+      return res.send(err)
     }
 
-    res.json({ message: 'Movie successfully deleted!', result })
+    return res.json({ message: 'Movie successfully deleted!', result })
   })
 }
 
 function updateMovie (req, res) {
   Movie.findById({_id: req.params.id}, (err, movie) => {
     if (err) {
-      res.send(err)
+      return res.send(err)
     }
 
     Object.assign(movie, req.body).save((err, movie) => {
       if (err) {
-        res.send(err)
+        return res.send(err)
       }
-      res.json({ message: 'Movie updated!', movie })
+      return res.json({ message: 'Movie updated!', movie })
     })
   })
 }
