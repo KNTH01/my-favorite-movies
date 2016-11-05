@@ -24,9 +24,22 @@ app.use(bodyParser.urlencoded({
 }))
 app.use(bodyParser.json())
 
+const movieRoutes = require('./routes/movies')
+
 // render homepage
 app.get('/', (req, res) => {
   res.render('index.njk')
 })
+
+// Movies rest api routes
+app
+  .route('/movies')
+  .get(movieRoutes.getMovies)
+  .post(movieRoutes.postMovie)
+app
+  .route('/movies/:id')
+  .get(movieRoutes.getMovie)
+  .delete(movieRoutes.deleteMovie)
+  .put(movieRoutes.updateMovie)
 
 module.exports = app
