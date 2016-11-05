@@ -4,6 +4,8 @@
   "description": "Application that allows to search for a movie and save it as a favorite movie in a Mongo database",
   "main": "index.js",
   "scripts": {
+    "dev": "nodemon",
+    "start": "node",
     "test": "NODE_ENV=test ./node_modules/mocha/bin/mocha"
   },
   "repository": {
@@ -30,9 +32,13 @@
     "eslint-config-standard": "^6.2.1",
     "eslint-plugin-promise": "^3.3.1",
     "eslint-plugin-standard": "^2.0.1",
-    "mocha": "^3.1.2"
+    "mocha": "^3.1.2",
+    "nodemon": "^1.11.0"
   },
   "dependencies": {
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "nunjucks": "^3.0.0",
     "request": "^2.78.0"
   }
 }
