@@ -1,6 +1,8 @@
 const chai = require('chai')
 const expect = chai.expect
 const chaiHttp = require('chai-http')
+const server = require('../index')
+const Movie = require('../app/models/Movie')
 
 chai.use(chaiHttp)
 chai.should()
@@ -17,7 +19,7 @@ describe('Movies Rest API', () => {
   describe('/GET movies', () => {
     it('it should GET all the favorite movies', (done) => {
       chai.request(server).get('/movies').end((err, res) => {
-        expect(err).to.be.not.null
+        expect(err).to.be.null
         res.should.have.status(200)
         res.body.should.be.a('array')
         res.body.length.should.be.equal(0)
@@ -34,12 +36,12 @@ describe('Movies Rest API', () => {
       }
 
       chai.request(server).post('/movies').send(movie).end((err, res) => {
-        expect(err).to.be.not.null
+        expect(err).to.be.null
         res.should.have.status(200)
         res.body.should.be.a('object')
         res.body.should.have.property('errors')
         res.body.errors.should.have.property('title')
-        res.body.errors.pages.should.have.property('kind').equal('required')
+        res.body.errors.title.should.have.property('kind').equal('required')
         done()
       })
     })
@@ -51,13 +53,13 @@ describe('Movies Rest API', () => {
         type: 'movie'
       }
       chai.request(server).post('/movies').send(movie).end((err, res) => {
-        expect(err).to.be.not.null
+        expect(err).to.be.null
         res.should.have.status(200)
         res.body.should.be.a('object')
         res.body.should.have.property('message').equal('Movie successfully added!')
-        res.body.movies.should.have.property('title')
-        res.body.movies.should.have.property('type')
-        res.body.movies.should.have.property('year')
+        res.body.movie.should.have.property('title')
+        res.body.movie.should.have.property('type')
+        res.body.movie.should.have.property('year')
         done()
       })
     })
@@ -78,8 +80,6 @@ describe('Movies Rest API', () => {
           res.should.have.status(200)
           res.body.should.be.a('object')
           res.body.should.have.property('title')
-          res.body.should.have.property('author')
-          res.body.should.have.property('pages')
           res.body.should.have.property('year')
           res.body.should.have.property('_id').equal(movie.id)
           done()
@@ -123,7 +123,9 @@ describe('Movies Rest API', () => {
       movie.save((err, movie) => {
         expect(err).to.be.null
 
-        chai.request(server).delete('/movies/' + movies.id).end((err, res) => {
+        chai.request(server).delete('/movies/' + movie.id).end((err, res) => {
+          expect(err).to.be.null
+
           res.should.have.status(200)
           res.body.should.be.a('object')
           res.body.should.have.property('message').equal('Movie successfully deleted!')
