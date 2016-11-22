@@ -17,7 +17,7 @@ export default {
   },
   methods: {
     searchMovie () {
-      window.fetch(`/search?s=${this.searchInput}`)
+      window.fetch(`/search/${this.searchInput}`)
         .then(res => {
           return res.json()
         })
