@@ -6,15 +6,28 @@ module.exports = {
     return new Promise(function (resolve, reject) {
       request(`${apiUrl}&s=${search}&page=${page}`, function (err, res, body) {
         if (err) {
+          console.log('deolkdoekdoe')
           reject(err)
         }
 
         const searchApi = JSON.parse(body)
+        let results = []
+
+        searchApi.Search.forEach(movie => {
+          results.push({
+            title: movie.Title,
+            Year: movie.Year,
+            imdbID: movie.imdbID,
+            type: movie.Type,
+            img: movie.Poster
+          })
+        })
+
         resolve({
           page,
-          results: searchApi.Search,
+          results,
           totalResults: searchApi.totalResults,
-          sucess: searchApi.Response === 'true' ? true : false
+          success: searchApi.Response === 'True' ? true : false
         })
       })
     })
