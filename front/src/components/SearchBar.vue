@@ -1,12 +1,10 @@
 <template>
-  <form action="/search" method="GET">
-    <div class="SearchBar">
-        <input class="SearchInput" type="search" name="search" v-model="searchInput">
-        <div class="SearchBtn">
-          <input class="SearchBtn-input Button Button-primary" type="submit" value="Go">
-        </div>
-    </div>
-</form>
+  <div class="SearchBar">
+      <input class="SearchInput" type="search" name="search" v-model="searchInput" @keypress.enter="searchMovie">
+      <div class="SearchBtn">
+        <button class="SearchBtn-input Button Button-primary" @click="searchMovie">Go</button>
+      </div>
+  </div>
 </template>
 
 <script>
@@ -16,13 +14,24 @@ export default {
     return {
       searchInput: ''
     }
+  },
+  methods: {
+    searchMovie () {
+      window.fetch(`/search?s=${this.searchInput}`)
+        .then(results => {
+          console.log(results)
+        })
+        .catch(err => {
+          console.log(err)
+        })
+    }
   }
 }
 </script>
 
 <style lang="scss" scoped>
   @import "../styles/color";
-  
+
   $paddindSearch: 4px 10px;
 
   .SearchBar {
