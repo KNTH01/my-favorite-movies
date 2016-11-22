@@ -1,16 +1,29 @@
 <template>
   <div id="app">
-    <search-bar></search-bar>
+    <search-bar @searchMovie="searchMovie"></search-bar>
+    <result-list :movies="movies"></result-list>
   </div>
 </template>
 
 <script>
 import SearchBar from './components/SearchBar'
+import ResultList from './components/ResultList'
 
 export default {
   name: 'app',
   components: {
-    SearchBar
+    SearchBar,
+    ResultList
+  },
+  data () {
+    return {
+      movies: []
+    }
+  },
+  methods: {
+    searchMovie (movies) {
+      this.movies = movies.results
+    }
   }
 }
 </script>

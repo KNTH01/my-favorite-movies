@@ -17,7 +17,7 @@ module.exports = {
           searchApi.Search.forEach(movie => {
             results.push({
               title: movie.Title,
-              Year: movie.Year,
+              year: movie.Year,
               imdbID: movie.imdbID,
               type: movie.Type,
               img: movie.Poster

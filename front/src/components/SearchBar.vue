@@ -12,7 +12,7 @@ export default {
   name: 'searchBar',
   data () {
     return {
-      searchInput: ''
+      searchInput: 'Matrix'
     }
   },
   methods: {
@@ -22,7 +22,7 @@ export default {
           return res.json()
         })
         .then(json => {
-          console.log(json)
+          this.$emit('searchMovie', json)
         })
         .catch(err => {
           console.log(err)
@@ -48,6 +48,7 @@ export default {
     display: table-cell;
     padding: $paddindSearch;
     border: 1px solid $color1;
+    margin-bottom: 20px;
     &:focus {
       outline: none;
     }
