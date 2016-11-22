@@ -13,21 +13,24 @@ module.exports = {
         const searchApi = JSON.parse(body)
         let results = []
 
-        searchApi.Search.forEach(movie => {
-          results.push({
-            title: movie.Title,
-            Year: movie.Year,
-            imdbID: movie.imdbID,
-            type: movie.Type,
-            img: movie.Poster
+        if (searchApi.Search) {
+          searchApi.Search.forEach(movie => {
+            results.push({
+              title: movie.Title,
+              Year: movie.Year,
+              imdbID: movie.imdbID,
+              type: movie.Type,
+              img: movie.Poster
+            })
           })
-        })
+        }
 
         resolve({
           page,
           results,
           totalResults: searchApi.totalResults,
-          success: searchApi.Response === 'True' ? true : false
+          success: searchApi.Response === 'True' ? true : false,
+          error: searchApi.Error || undefined
         })
       })
     })
