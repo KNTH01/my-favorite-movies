@@ -16,14 +16,20 @@ export default {
 </script>
 
 <style lang="scss">
-body {
-  background-color: #EEE;
-}
+  @import "styles/color";
 
-#app {
-  width: 728px;
-  background-color: #FFF;
-  border-radius: 4px;
-  border-top: 4px solid black;
-}
+  body {
+    font-size: 120%;
+    background-color: $color4;
+    color: $color2;
+    font-family: cursive;
+  }
+
+  #app {
+    width: 728px;
+    background-color: #FFF;
+    padding: 10px;
+    border-radius: 4px;
+    border-top: 4px solid black;
+  }
 </style>
