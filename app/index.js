@@ -41,12 +41,7 @@ app.get('/', (req, res) => {
 app.get('/search', (req, res) => {
   const search = req.query.s
   MovieOMDB.search(search)
-    .then(result => {
-      res.send({
-        success: true,
-        result
-      })
-    })
+    .then(result => res.send(result))
     .catch(err => {
       res.send({
         success: false,

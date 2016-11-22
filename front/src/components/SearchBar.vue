@@ -18,8 +18,11 @@ export default {
   methods: {
     searchMovie () {
       window.fetch(`/search?s=${this.searchInput}`)
-        .then(results => {
-          console.log(results)
+        .then(res => {
+          return res.json()
+        })
+        .then(json => {
+          console.log(json)
         })
         .catch(err => {
           console.log(err)
