@@ -3,7 +3,8 @@
     <template v-for="movie in movies">
       <result-movie :title="movie.title" :year="movie.year" :img="movie.img"></result-movie>
     </template>
-    <pagination :page="page" :totalPages="movie"></pagination>
+    {{ movieResults.totalPages }}
+    <pagination :page="page" :totalResults="movieResults.totalResults"></pagination>
   </div>
 </template>
 
@@ -17,15 +18,15 @@
       ResultMovie,
       Pagination
     },
-    props: ['moviesResults'],
-    computed: {
-      movies () {
-        return this.moviesResults.results
-      }
-    },
+    props: ['movieResults'],
     data () {
       return {
         page: 1
+      }
+    },
+    computed: {
+      movies () {
+        return this.movieResults.results
       }
     }
   }
