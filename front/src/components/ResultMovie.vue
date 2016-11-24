@@ -16,6 +16,11 @@
           background: `url(${this.img}`
         }
       }
+    },
+    watch: {
+      img () {
+        this.backgroundImg.background = `url(${this.img}`
+      }
     }
   }
 </script>
