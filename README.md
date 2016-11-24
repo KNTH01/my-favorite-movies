@@ -6,6 +6,6 @@ Application that allows to search for a movie and save it as a favorite movie in
 
 ## TODO
 
-- [ ] add a user interface allowing user to search a movie and display that search
+- [x] add a user interface allowing user to search a movie and display that search
 - [ ] allow user to save a favorite movie into the database
 - [ ] allow user to delete a favorite movie from the database

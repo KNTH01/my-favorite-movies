@@ -3,6 +3,9 @@ const app = express()
 const bodyParser = require('body-parser')
 const nunjucks = require('nunjucks')
 const mongoose = require('mongoose')
+
+const MovieOMDB = require('./lib/MovieOMDB')
+
 const config = process.env.NODE_ENV === 'test' ? require('../config/test.json') : require('../config/default.json')
 
 // setup mongoose promise api
@@ -35,6 +38,18 @@ app.get('/', (req, res) => {
 })
 
 // Movies rest api routes
+app.get('/search/:search/:page?', (req, res) => {
+  const search = req.params.search
+  MovieOMDB.search(search)
+    .then(result => res.send(result))
+    .catch(err => {
+      res.send({
+        success: false,
+        error: err
+      })
+    })
+})
+
 app
   .route('/movies')
   .get(movieRoutes.getMovies)
