@@ -48,7 +48,9 @@ export default {
     display: table-cell;
     padding: $paddindSearch;
     border: 1px solid $color1;
+    border-radius: 4px 0 0 4px;
     margin-bottom: 20px;
+
     &:focus {
       outline: none;
     }
@@ -62,6 +64,7 @@ export default {
         outline: none;
       }
       border: 1px solid $color1;
+      border-radius: 0 4px 4px 0px;
       padding: $paddindSearch;
       font-size: 2em;
     }
