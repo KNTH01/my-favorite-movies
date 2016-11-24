@@ -3,18 +3,26 @@
     <template v-for="movie in movies">
       <result-movie :title="movie.title" :year="movie.year" :img="movie.img"></result-movie>
     </template>
+    <pagination :page="page" :totalPages="movie"></pagination>
   </div>
 </template>
 
 <script>
   import ResultMovie from './ResultMovie.vue'
+  import Pagination from './Pagination'
 
   export default {
     name: 'resultList',
     components: {
-      ResultMovie
+      ResultMovie,
+      Pagination
     },
-    props: ['movies'],
+    props: ['moviesResults'],
+    computed: {
+      movies () {
+        return this.moviesResults.results
+      }
+    },
     data () {
       return {
         page: 1

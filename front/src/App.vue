@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <search-bar @searchMovie="searchMovie"></search-bar>
-    <result-list :movies="movies"></result-list>
+    <result-list :moviesResults="moviesResults"></result-list>
   </div>
 </template>
 
@@ -17,12 +17,12 @@ export default {
   },
   data () {
     return {
-      movies: []
+      moviesResults: []
     }
   },
   methods: {
-    searchMovie (movies) {
-      this.movies = movies.results
+    searchMovie (moviesResults) {
+      this.moviesResults = moviesResults
     }
   }
 }
