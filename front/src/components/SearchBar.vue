@@ -33,7 +33,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  @import "../styles/color";
+@import "../styles/color";
 
   $paddindSearch: 4px 10px;
 

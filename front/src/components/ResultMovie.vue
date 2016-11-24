@@ -1,6 +1,8 @@
 <template lang="html">
-  <div class="ResultMovie">
-    <img class="ResultMovie-img" :src="img" :alt="title" />
+  <div class="ResultMovie" :style="backgroundImg">
+    <div class="ResultMovie-detail">
+      {{ title }}
+    </div>
   </div>
 </template>
 
@@ -11,21 +13,31 @@
     data () {
       return {
         backgroundImg: {
-          backgroundImg: `url(${this.img}`
+          background: `url(${this.img}`
         }
       }
     }
   }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
+  @import "../styles/color";
+
   .ResultMovie {
-    border-radius: 4px;
-    border: 1px solid black;
     width: 150px;
-    height: 100px;
-    &-img {
-      width: 150px;
+    height: 200px;
+    border-radius: 4px;
+    margin: 0 0 20px 0;
+    &-detail {
+      border-radius: 4px 4px 0 0;
+      padding: 5px;
+      background-color: $color2;
+      height: 20px;
+      color: #FFF;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
   }
+
 </style>

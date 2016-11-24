@@ -1,8 +1,8 @@
 <template lang="html">
-  <div class="">
-    <div v-for="movie in movies">
+  <div class="ResultList">
+    <template v-for="movie in movies">
       <result-movie :title="movie.title" :year="movie.year" :img="movie.img"></result-movie>
-    </div>
+    </template>
   </div>
 </template>
 
@@ -23,6 +23,10 @@
   }
 </script>
 
-<style lang="scss">
-
+<style lang="scss" scoped>
+  .ResultList {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
 </style>
