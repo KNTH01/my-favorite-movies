@@ -1,7 +1,13 @@
 <template>
   <div id="app">
-    <search-bar @searchMovie="searchMovie"></search-bar>
-    <result-list :movies="movies"></result-list>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-12">
+          <search-bar></search-bar>
+          <result-list></result-list>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -14,16 +20,6 @@ export default {
   components: {
     SearchBar,
     ResultList
-  },
-  data () {
-    return {
-      movies: []
-    }
-  },
-  methods: {
-    searchMovie (movies) {
-      this.movies = movies.results
-    }
   }
 }
 </script>
@@ -32,14 +28,12 @@ export default {
   @import "styles/color";
 
   body {
-    font-size: 120%;
     background-color: $color4;
     color: $color2;
-    font-family: cursive;
+    padding:12px;
   }
 
   #app {
-    width: 728px;
     background-color: #FFF;
     padding: 10px;
     border-radius: 4px;
