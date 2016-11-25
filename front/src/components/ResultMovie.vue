@@ -16,12 +16,11 @@
         }
       }
     },
-    mounted () {
+    created () {
       this.setBackground()
     },
     computed: {
       backgroundImg () {
-        console.log('yes', this.img === 'N/A')
         const defaultImg = 'url(http://www.freeiconspng.com/uploads/movie-icon-2.png)'
         return this.img === 'N/A' ? defaultImg : `url(${this.img}`
       }
@@ -33,6 +32,7 @@
     },
     methods: {
       setBackground () {
+        console.log(this.backgroundImg)
         this.backgroundStyle.backgroundImage = this.backgroundImg
       }
     }
