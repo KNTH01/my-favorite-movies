@@ -1,5 +1,5 @@
 <template lang="html">
-  <div class="ResultMovie" :style="backgroundImg">
+  <div class="ResultMovie" :style="backgroundStyle">
     <div class="ResultMovie-detail">
       {{ title }}
     </div>
@@ -12,14 +12,28 @@
     props: ['title', 'year', 'img'],
     data () {
       return {
-        backgroundImg: {
-          background: `url(${this.img}`
+        backgroundStyle: {
         }
+      }
+    },
+    mounted () {
+      this.setBackground()
+    },
+    computed: {
+      backgroundImg () {
+        console.log('yes', this.img === 'N/A')
+        const defaultImg = 'url(http://www.freeiconspng.com/uploads/movie-icon-2.png)'
+        return this.img === 'N/A' ? defaultImg : `url(${this.img}`
       }
     },
     watch: {
       img () {
-        this.backgroundImg.background = `url(${this.img}`
+        this.setBackground()
+      }
+    },
+    methods: {
+      setBackground () {
+        this.backgroundStyle.backgroundImage = this.backgroundImg
       }
     }
   }
@@ -33,6 +47,9 @@
     height: 200px;
     border-radius: 4px;
     margin: 0 0 20px 0;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 150px 200px;
     &-detail {
       border-radius: 4px 4px 0 0;
       padding: 5px;
