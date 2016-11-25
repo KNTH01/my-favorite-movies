@@ -3,13 +3,13 @@
     <nav aria-label="Page navigation">
       <ul class="pagination">
         <li>
-          <a @click="page <=1 ? 1 : page--" href="#" aria-label="Previous">
+          <a @click.prevent="page <=1 ? 1 : page--" class="PageButton" aria-label="Previous">
             <span aria-hidden="true">&laquo;</span>
           </a>
         </li>
         <li v-for="(pageNumber, index) in 5" @click="page = pageNumber" :class="{ active: page === pageNumber}"><span class="PageButton">{{ pageNumber }}</span></li>
         <li>
-          <a @click="page >= 5 ? 5 : page++" href="#" aria-label="Next">
+          <a @click.prevent="page >= 5 ? 5 : page++" class="PageButton" aria-label="Next">
             <span aria-hidden="true">&raquo;</span>
           </a>
         </li>
