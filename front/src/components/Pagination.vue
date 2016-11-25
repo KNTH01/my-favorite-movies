@@ -32,6 +32,11 @@
         page: 1
       }
     },
+    created () {
+      eventBus.$on('searchMovie', (results) => {
+        this.page = Number.isInteger(parseInt(results.page)) ? parseInt(results.page) : 1
+      })
+    },
     methods: {
       searchMovie (page) {
         this.page = page
