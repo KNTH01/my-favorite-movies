@@ -12,7 +12,7 @@ export default {
   name: 'searchBar',
   data () {
     return {
-      searchInput: 'Matrix'
+      searchInput: 'Batman'
     }
   },
   methods: {

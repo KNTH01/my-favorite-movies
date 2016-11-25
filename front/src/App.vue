@@ -1,7 +1,13 @@
 <template>
   <div id="app">
-    <search-bar @searchMovie="searchMovie"></search-bar>
-    <result-list :movieResults="movieResults"></result-list>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-12">
+          <search-bar @searchMovie="searchMovie"></search-bar>
+          <result-list :movieResults="movieResults"></result-list>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -33,14 +39,12 @@ export default {
   @import "styles/color";
 
   body {
-    font-size: 120%;
     background-color: $color4;
     color: $color2;
-    font-family: cursive;
+    padding:12px;
   }
 
   #app {
-    width: 728px;
     background-color: #FFF;
     padding: 10px;
     border-radius: 4px;

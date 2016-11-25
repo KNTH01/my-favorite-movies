@@ -6,7 +6,6 @@ module.exports = {
     return new Promise(function (resolve, reject) {
       request(`${apiUrl}&s=${search}&page=${page}`, function (err, res, body) {
         if (err) {
-          console.log('deolkdoekdoe')
           reject(err)
         }
 

@@ -37,7 +37,7 @@
       border-radius: 4px 4px 0 0;
       padding: 5px;
       background-color: $color2;
-      height: 20px;
+      height: 30px;
       color: #FFF;
       white-space: nowrap;
       overflow: hidden;
