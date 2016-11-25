@@ -3,13 +3,13 @@
     <nav aria-label="Page navigation">
       <ul class="pagination">
         <li>
-          <a href="#" aria-label="Previous">
+          <a @click="page <=1 ? 1 : page--" href="#" aria-label="Previous">
             <span aria-hidden="true">&laquo;</span>
           </a>
         </li>
-        <li v-for="(pageNumber, index) in 5" @click="searchMovie(pageNumber)" :class="{ active: page === pageNumber}"><span class="PageButton">{{ pageNumber }}</span></li>
+        <li v-for="(pageNumber, index) in 5" @click="page = pageNumber" :class="{ active: page === pageNumber}"><span class="PageButton">{{ pageNumber }}</span></li>
         <li>
-          <a href="#" aria-label="Next">
+          <a @click="page >= 5 ? 5 : page++" href="#" aria-label="Next">
             <span aria-hidden="true">&raquo;</span>
           </a>
         </li>
@@ -37,9 +37,8 @@
         this.page = Number.isInteger(parseInt(results.page)) ? parseInt(results.page) : 1
       })
     },
-    methods: {
-      searchMovie (page) {
-        this.page = page
+    watch: {
+      page () {
         eventBus.searchMovie(null, this.page)
       }
     }
