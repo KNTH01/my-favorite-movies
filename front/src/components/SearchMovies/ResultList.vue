@@ -22,7 +22,7 @@
 <script>
   import ResultMovie from './ResultMovie.vue'
   import Pagination from './Pagination'
-  import { eventBus } from '../main'
+  import { eventBus } from '../../main'
 
   export default {
     name: 'resultList',

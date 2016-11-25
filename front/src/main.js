@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import App from './App'
+import router from './router'
 
 export const eventBus = new Vue({
   data: {
@@ -27,6 +28,7 @@ export const eventBus = new Vue({
 
 /* eslint-disable no-new */
 new Vue({
+  router,
   el: '#app',
   template: '<App/>',
   components: { App }

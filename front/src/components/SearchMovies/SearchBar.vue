@@ -1,6 +1,6 @@
 <template>
   <div class="SearchBar">
-      <input class="SearchInput" type="search" name="search" v-model="searchInput" @keypress.enter="searchMovie">
+      <input class="SearchInput" type="search" name="search" v-model="searchInput" @keypress.enter="searchMovie" placeholder="Search...">
       <div class="SearchBtn">
         <button class="SearchBtn-input Button Button-primary" @click="searchMovie">Go</button>
       </div>
@@ -8,13 +8,13 @@
 </template>
 
 <script>
-import { eventBus } from '../main'
+import { eventBus } from '../../main'
 
 export default {
   name: 'searchBar',
   data () {
     return {
-      searchInput: 'Batman'
+      searchInput: ''
     }
   },
   methods: {
@@ -26,7 +26,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../styles/color";
+@import "../../styles/color";
 
   $paddindSearch: 4px 10px;
 
