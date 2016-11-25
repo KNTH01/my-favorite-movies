@@ -40,7 +40,7 @@
 </script>
 
 <style lang="scss" scoped>
-  @import "../styles/color";
+  @import "../../styles/color";
 
   .ResultMovie {
     width: 150px;
