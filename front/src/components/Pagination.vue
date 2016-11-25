@@ -1,6 +1,5 @@
 <template lang="html">
   <div class="Pagination">
-    {{ page }} | {{ totalResults }}
     <nav aria-label="Page navigation">
       <ul class="pagination">
         <li>
@@ -8,11 +7,7 @@
             <span aria-hidden="true">&laquo;</span>
           </a>
         </li>
-        <li><a href="#">1</a></li>
-        <li><a href="#">2</a></li>
-        <li><a href="#">3</a></li>
-        <li><a href="#">4</a></li>
-        <li><a href="#">5</a></li>
+        <li v-for="(pageNumber, index) in 5" @click="page = index + 1" :class="{ active: page === pageNumber}"><span class="PageButton">{{ pageNumber }}</span></li>
         <li>
           <a href="#" aria-label="Next">
             <span aria-hidden="true">&raquo;</span>
@@ -25,15 +20,21 @@
 <script>
   export default {
     props: {
-      page: Number,
       totalResults: {
         type: Number,
         default: 1
+      }
+    },
+    data () {
+      return {
+        page: 1
       }
     }
   }
 </script>
 
 <style lang="scss" scoped>
-
+  .PageButton {
+    cursor: pointer;
+  }
 </style>

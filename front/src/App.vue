@@ -28,7 +28,6 @@ export default {
   },
   methods: {
     searchMovie (movieResults) {
-      console.log(movieResults)
       this.movieResults = movieResults
     }
   }

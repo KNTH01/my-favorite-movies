@@ -1,10 +1,21 @@
 <template lang="html">
   <div class="ResultList">
-    <template v-for="movie in movies">
-      <result-movie :title="movie.title" :year="movie.year" :img="movie.img"></result-movie>
-    </template>
-    {{ movieResults.totalPages }}
-    <pagination :page="page" :totalResults="movieResults.totalResults"></pagination>
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="MoviesContainer">
+          <template v-for="movie in movies">
+            <result-movie :title="movie.title" :year="movie.year" :img="movie.img"></result-movie>
+          </template>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12">
+        <template v-if="movies">
+          <pagination :totalResults="parseInt(movieResults.totalResults)"></pagination>
+        </template>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -19,11 +30,6 @@
       Pagination
     },
     props: ['movieResults'],
-    data () {
-      return {
-        page: 1
-      }
-    },
     computed: {
       movies () {
         return this.movieResults.results
@@ -33,7 +39,7 @@
 </script>
 
 <style lang="scss" scoped>
-  .ResultList {
+  .MoviesContainer {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
