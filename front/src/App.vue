@@ -3,8 +3,10 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-sm-12">
-          <search-bar></search-bar>
-          <result-list></result-list>
+          <navigation></navigation>
+          <div class="AppContainer">
+            <router-view></router-view>
+          </div>
         </div>
       </div>
     </div>
@@ -12,16 +14,14 @@
 </template>
 
 <script>
-import SearchBar from './components/SearchBar'
-import ResultList from './components/ResultList'
+  import Navigation from './components/Navigation'
 
-export default {
-  name: 'app',
-  components: {
-    SearchBar,
-    ResultList
+  export default {
+    name: 'app',
+    components: {
+      Navigation
+    }
   }
-}
 </script>
 
 <style lang="scss">
@@ -33,7 +33,7 @@ export default {
     padding:12px;
   }
 
-  #app {
+  .AppContainer {
     background-color: #FFF;
     padding: 10px;
     border-radius: 4px;

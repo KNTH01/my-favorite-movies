@@ -40,6 +40,7 @@
     "express": "^4.14.0",
     "mongoose": "^4.6.6",
     "nunjucks": "^3.0.0",
-    "request": "^2.78.0"
+    "request": "^2.78.0",
+    "vue-router": "^2.0.3"
   }
 }
