@@ -8,6 +8,8 @@
 </template>
 
 <script>
+import { eventBus } from '../main'
+
 export default {
   name: 'searchBar',
   data () {
@@ -17,16 +19,7 @@ export default {
   },
   methods: {
     searchMovie () {
-      window.fetch(`/search/${this.searchInput}`)
-        .then(res => {
-          return res.json()
-        })
-        .then(json => {
-          this.$emit('searchMovie', json)
-        })
-        .catch(err => {
-          console.log(err)
-        })
+      eventBus.searchMovie(this.searchInput)
     }
   }
 }

@@ -3,8 +3,8 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-sm-12">
-          <search-bar @searchMovie="searchMovie"></search-bar>
-          <result-list :movieResults="movieResults"></result-list>
+          <search-bar></search-bar>
+          <result-list></result-list>
         </div>
       </div>
     </div>
@@ -20,16 +20,6 @@ export default {
   components: {
     SearchBar,
     ResultList
-  },
-  data () {
-    return {
-      movieResults: []
-    }
-  },
-  methods: {
-    searchMovie (movieResults) {
-      this.movieResults = movieResults
-    }
   }
 }
 </script>

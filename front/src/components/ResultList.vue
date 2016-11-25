@@ -22,6 +22,7 @@
 <script>
   import ResultMovie from './ResultMovie.vue'
   import Pagination from './Pagination'
+  import { eventBus } from '../main'
 
   export default {
     name: 'resultList',
@@ -29,7 +30,16 @@
       ResultMovie,
       Pagination
     },
-    props: ['movieResults'],
+    data () {
+      return {
+        movieResults: {}
+      }
+    },
+    created () {
+      eventBus.$on('searchMovie', movieResults => {
+        this.movieResults = movieResults
+      })
+    },
     computed: {
       movies () {
         return this.movieResults.results
