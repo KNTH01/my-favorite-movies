@@ -2,9 +2,16 @@ import Vue from 'vue'
 import App from './App'
 
 export const eventBus = new Vue({
+  data: {
+    searchInput: ''
+  },
   methods: {
-    searchMovie (searchInput, page = 1) {
-      window.fetch(`/search/${searchInput}/${page}`)
+    searchMovie (searchInput = null, page = 1) {
+      if (searchInput) {
+        this.searchInput = searchInput
+      }
+
+      window.fetch(`/search/${this.searchInput}/${page}`)
         .then(res => {
           return res.json()
         })

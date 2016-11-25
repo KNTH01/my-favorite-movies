@@ -39,8 +39,7 @@ app.get('/', (req, res) => {
 
 // Movies rest api routes
 app.get('/search/:search/:page?', (req, res) => {
-  const search = req.params.search
-  MovieOMDB.search(search)
+  MovieOMDB.search(req.params.search, req.params.page || 1)
     .then(result => res.send(result))
     .catch(err => {
       res.send({

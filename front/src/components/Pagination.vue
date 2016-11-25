@@ -7,7 +7,7 @@
             <span aria-hidden="true">&laquo;</span>
           </a>
         </li>
-        <li v-for="(pageNumber, index) in 5" @click="page = index + 1" :class="{ active: page === pageNumber}"><span class="PageButton">{{ pageNumber }}</span></li>
+        <li v-for="(pageNumber, index) in 5" @click="searchMovie(pageNumber)" :class="{ active: page === pageNumber}"><span class="PageButton">{{ pageNumber }}</span></li>
         <li>
           <a href="#" aria-label="Next">
             <span aria-hidden="true">&raquo;</span>
@@ -18,6 +18,8 @@
   </div>
 </template>
 <script>
+  import { eventBus } from '../main'
+
   export default {
     props: {
       totalResults: {
@@ -28,6 +30,12 @@
     data () {
       return {
         page: 1
+      }
+    },
+    methods: {
+      searchMovie (page) {
+        this.page = page
+        eventBus.searchMovie(null, this.page)
       }
     }
   }
