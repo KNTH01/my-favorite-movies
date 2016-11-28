@@ -20,7 +20,7 @@
 </template>
 
 <script>
-  import ResultMovie from './ResultMovie.vue'
+  import ResultMovie from './ResultMovie'
   import Pagination from './Pagination'
   import { eventBus } from '../../main'
 
