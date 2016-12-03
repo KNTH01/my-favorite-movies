@@ -8,25 +8,25 @@
 </template>
 
 <script>
-import { eventBus } from '../../main'
-
-export default {
-  name: 'searchBar',
-  data () {
-    return {
-      searchInput: ''
-    }
-  },
-  methods: {
-    searchMovie () {
-      eventBus.searchMovie(this.searchInput)
+  export default {
+    name: 'searchBar',
+    data () {
+      return {
+        searchInput: ''
+      }
+    },
+    methods: {
+      searchMovie () {
+        this.$store.dispatch('searchMovie', {
+          movie: this.searchInput
+        })
+      }
     }
   }
-}
 </script>
 
 <style lang="scss" scoped>
-@import "../../styles/color";
+  @import "../../styles/color";
 
   $paddindSearch: 4px 10px;
 
