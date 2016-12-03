@@ -18,8 +18,6 @@
   </div>
 </template>
 <script>
-  // import { eventBus } from '../../main'
-
   export default {
     props: {
       totalResults: {
@@ -32,14 +30,12 @@
         page: 1
       }
     },
-    created () {
-      // eventBus.$on('searchMovie', (results) => {
-      //   this.page = Number.isInteger(parseInt(results.page)) ? parseInt(results.page) : 1
-      // })
-    },
     watch: {
       page () {
-        // eventBus.searchMovie(null, this.page)
+        this.$store.dispatch('searchMovie', {
+          movie: this.$store.getters.searchMovie,
+          page: this.page
+        })
       }
     }
   }
