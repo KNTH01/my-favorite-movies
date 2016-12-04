@@ -22,7 +22,7 @@
 <script>
   import ResultMovie from './ResultMovie'
   import Pagination from './Pagination'
-  import { eventBus } from '../../main'
+  import { mapGetters } from 'vuex'
 
   export default {
     name: 'resultList',
@@ -35,14 +35,10 @@
         movieResults: {}
       }
     },
-    created () {
-      eventBus.$on('searchMovie', movieResults => {
-        this.movieResults = movieResults
-      })
-    },
     computed: {
+      ...mapGetters(['searchResult']),
       movies () {
-        return this.movieResults.results
+        return this.searchResult.results
       }
     }
   }

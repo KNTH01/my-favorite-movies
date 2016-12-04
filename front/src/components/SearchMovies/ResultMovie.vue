@@ -32,7 +32,6 @@
     },
     methods: {
       setBackground () {
-        console.log(this.backgroundImg)
         this.backgroundStyle.backgroundImage = this.backgroundImg
       }
     }
