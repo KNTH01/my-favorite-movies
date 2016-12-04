@@ -7,9 +7,9 @@
             <span aria-hidden="true">&laquo;</span>
           </a>
         </li>
-        <li v-for="(pageNumber, index) in 5" @click="page = pageNumber" :class="{ active: page === pageNumber}"><span class="PageButton">{{ pageNumber }}</span></li>
+        <li v-for="(pageNumber, index) in totalPage" @click="page = pageNumber" :class="{ active: page === pageNumber}"><span class="PageButton">{{ pageNumber }}</span></li>
         <li>
-          <a @click.prevent="page >= 5 ? 5 : page++" class="PageButton" aria-label="Next">
+          <a @click.prevent="page >= totalPage ? totalPage : page++" class="PageButton" aria-label="Next">
             <span aria-hidden="true">&raquo;</span>
           </a>
         </li>
@@ -19,15 +19,17 @@
 </template>
 <script>
   export default {
-    props: {
-      totalResults: {
-        type: Number,
-        default: 1
-      }
-    },
     data () {
       return {
         page: 1
+      }
+    },
+    computed: {
+      totalResults () {
+        return this.$store.getters.searchResult.totalResults
+      },
+      totalPage () {
+        return Math.ceil(this.totalResults / 10)
       }
     },
     watch: {
