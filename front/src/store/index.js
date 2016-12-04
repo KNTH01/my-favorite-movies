@@ -22,9 +22,6 @@ export default new Vuex.Store({
   },
   actions: {
     searchMovie ({commit}, {movie, page = 1}) {
-      // mutate searchMovie state
-      commit('setSearchMovie', movie)
-
       // search movie request
       window.fetch(`/search/${movie}/${page}`)
         .then(res => {

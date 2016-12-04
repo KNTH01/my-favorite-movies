@@ -10,9 +10,14 @@
 <script>
   export default {
     name: 'searchBar',
-    data () {
-      return {
-        searchInput: ''
+    computed: {
+      searchInput: {
+        get () {
+          return this.$store.getters.searchMovie
+        },
+        set (value) {
+          this.$store.commit('setSearchMovie', value)
+        }
       }
     },
     methods: {
