@@ -5,7 +5,9 @@
         <div class="col-sm-12">
           <navigation></navigation>
           <div class="AppContainer">
-            <router-view></router-view>
+            <transition name="fade" appear>
+              <router-view></router-view>
+            </transition>
           </div>
         </div>
       </div>
@@ -38,5 +40,21 @@
     padding: 10px;
     border-radius: 4px;
     border-top: 4px solid black;
+  }
+
+  .fade {
+    $duration: 0.8s;
+    &-enter {
+      opacity: 0;
+      &-active {
+        transition: opacity $duration ease-out;
+      }
+    }
+    &-leave {
+      &-leave-active {
+        opacity: 1;
+        transition: opacity $duration ease-out;
+      }
+    }
   }
 </style>

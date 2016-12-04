@@ -1,9 +1,11 @@
 <template>
   <div class="SearchBar">
-      <input class="SearchInput" type="search" name="search" v-model="searchInput" @keypress.enter="searchMovie" placeholder="Search...">
-      <div class="SearchBtn">
-        <button class="SearchBtn-input Button Button-primary" @click="searchMovie">Go</button>
-      </div>
+    <div class="input-group input-group-lg">
+      <input type="search" v-model="searchInput" @keypress.enter="searchMovie" class="form-control" placeholder="Search...">
+      <span class="input-group-btn">
+        <button class="btn btn-primary" type="button">Go!</button>
+      </span>
+    </div>
   </div>
 </template>
 
@@ -31,47 +33,7 @@
 </script>
 
 <style lang="scss" scoped>
-  @import "../../styles/color";
-
-  $paddindSearch: 4px 10px;
-
   .SearchBar {
-    width: 100%;
-    display: table;
-  }
-
-  .SearchInput {
-    width: 100%;
-    font-size: 2em;
-    display: table-cell;
-    padding: $paddindSearch;
-    border: 1px solid $color1;
-    border-radius: 4px 0 0 4px;
-    margin-bottom: 20px;
-
-    &:focus {
-      outline: none;
-    }
-  }
-
-  .SearchBtn {
-    display: table-cell;
-    width: 1px;
-    &-input {
-      &:focus {
-        outline: none;
-      }
-      border: 1px solid $color1;
-      border-radius: 0 4px 4px 0px;
-      padding: $paddindSearch;
-      font-size: 2em;
-    }
-  }
-
-  .Button {
-    &-primary {
-      background-color: $color1;
-      color: #FFF;
-    }
+    margin: 0 0 20px 0;
   }
 </style>
