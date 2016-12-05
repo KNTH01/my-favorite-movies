@@ -13,11 +13,14 @@
     "url": "git+https://github.com/KevinNTH/my-favorite-movies.git"
   },
   "keywords": [
-    "mongodb",
     "express",
+    "mongodb",
     "api",
     "rest",
-    "mocha"
+    "mocha",
+    "vue",
+    "vuex",
+    "vue-router"
   ],
   "author": "Kevin Nguyen",
   "license": "MIT",
